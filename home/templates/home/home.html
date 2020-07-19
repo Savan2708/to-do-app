@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-success" role="alert">
+  <button class="close" data-dismiss="alert">
+      <small><sup>x</sup></small>
+  </button>
+    {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<form class="form-inline" method="POST">
+    {% csrf_token %}
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+        <input type="text" required name="task" class="form-control" placeholder="Add Task" size="130">
+    </div>
+    <button type="submit" class="btn btn-primary mb-1">Add</button>
+</form>
+{% if tasks %}
+<table class="table table-bordered mt-2">
+    {% for work in tasks %}
+        <tr>
+            <td><a href="{% url 'edit' work.id %}">{{ work.task }}</a></td>
+            <td align="right"><a href="{% url 'delete' work.id %}">
+                <button type="button" class="btn btn-danger">Delete</button>
+            </a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
+
