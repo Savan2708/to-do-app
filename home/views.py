@@ -36,6 +36,7 @@ def edit(request, list_id):
             form.save()
             messages.success(request, 'Task Has Been Edited...!!!')
             return redirect('home')
+        return redirect('home')
     else:
         item = List.objects.get(pk=list_id)
         return render(request, 'home/edit.html', {'item': item})

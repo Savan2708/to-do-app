@@ -6,7 +6,7 @@
     <form class="form-inline" method="POST">
         {% csrf_token %}
         <div class="form-group mx-sm-3 mb-2 mt-2">
-            <input type="search" name="task" class="form-control" placeholder="{{ item.task }}" size="130"
+            <input type="search" required name="task" class="form-control" placeholder="{{ item.task }}" size="130"
                    value="{{ item.task }}">
         </div>
         <button type="submit" class="btn btn-primary mb-1">Edit</button>
